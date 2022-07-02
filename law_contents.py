@@ -25,6 +25,32 @@ def get_raw(number):
   contents = [e.text.strip() for e in root.iter() if e.text]
   return [t for t in contents if t]
 
+def preprocess_gcp(raw):
+    """
+    Perform pre-processing on raw contents of J-GCP.
+
+    Args:
+        raw (list[str]): raw contents of J-GCP
+
+    Returns:
+        str: pre-processed string of J-GCP
+
+    Notes:
+        - Article 56 will be removed.
+        - Strings enclosed with （ and ） will be removed.
+        - 「 and 」 will be removed.
+    """
+
+    contents = raw[:]
+    # Select sentenses
+    contents = [s for s in contents if s.endswith("。")]
+    # Join the sentenses
+    gcp = "".join(contents)
+    # 「 and 」 will be removed
+    gcp = gcp.translate(str.maketrans({"「": "", "」": ""}))
+    #　Strings enclosed with （ and ） will be removed
+    return re.sub("（[^（|^）]*）", "", gcp)
+
 law_number_dictionary = {
   '特許法': '昭和三十四年法律第百二十一号',
   '特許法施行規則': '昭和三十五年通商産業省令第十号',
@@ -40,4 +66,5 @@ law_number_dictionary = {
 }
 
 gcp_raw = get_raw(law_number_dictionary['特許法'])
-pprint(gcp_raw, compact=False)
+gcp = preprocess_gcp(gcp_raw)
+pprint(gcp, compact=False)
