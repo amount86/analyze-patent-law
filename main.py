@@ -1,7 +1,8 @@
 from pprint import pprint
 import law_loader
 
-# law_number_dictionary = {
+# 使う予定の法令等
+# {
 #   '特許法': '昭和三十四年法律第百二十一号',
 #   '特許法施行規則': '昭和三十五年通商産業省令第十号',
 #   '実用新案法': '昭和三十四年法律第百二十三号',
@@ -14,7 +15,6 @@ import law_loader
 #   '工業所有権に関する手続等の特例に関する法律施行規則': '平成二年通商産業省令第四十一号',
 #   '特許登録令': '昭和三十五年政令第三十九号'
 # }
-
 
 # The Constitution of Japan
 loader = law_loader.LawLoader(category=2)
