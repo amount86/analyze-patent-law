@@ -1,3 +1,4 @@
+from pprint import pprint
 import law_loader
 
 # law_number_dictionary = {
@@ -17,10 +18,14 @@ import law_loader
 
 # The Constitution of Japan
 loader = law_loader.LawLoader(category=2)
-consti_number = loader.get_law_number("特許法")
-print(consti_number) # -> '昭和二十一年憲法'
-consti_raw = loader.get_raw("昭和二十一年憲法")
-consti = loader.pre_process(consti_raw)
-# J-GCP：データ整形を含めてメソッドとして登録済
-loader4 = law_loader.LawLoader(category=4)
-gcp = loader4.gcp()
+row_numbers = loader.get_law_number('特許法')
+print(row_numbers)
+for row_number in row_numbers.values():
+  raw = loader.get_raw(row_number)
+  pprint(raw, compact=False)
+
+# consti_raw = loader.get_raw("昭和二十一年憲法")
+# consti = loader.pre_process(consti_raw)
+# # J-GCP：データ整形を含めてメソッドとして登録済
+# loader2 = law_loader.LawLoader(category=4)
+# gcp = loader2.gcp()
