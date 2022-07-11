@@ -19,7 +19,10 @@ import law_loader
 # The Constitution of Japan
 loader = law_loader.LawLoader(category=2)
 row_numbers = loader.get_law_number('特許法')
-print(row_numbers)
+result = ''
 for row_number in row_numbers.values():
   raw = loader.get_raw(row_number)
-  pprint(raw, compact=False)
+  # pprint(raw, compact=False)
+  result += ' '.join(raw)
+
+print(result)
