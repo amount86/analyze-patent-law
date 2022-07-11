@@ -12,6 +12,6 @@
 
 以下の手順で、コンテナを起動してください。
 1. `docker image build -t python_3.8 .`
-1. `docker run --name python_3.8 -v ~/app/jpo/analyze-patent-lay/src:/usr/src/app -it python_3.8 /bin/bash`
+1. `docker run --name python_3.8 -v ~/app/jpo/analyze-patent-law/src:/usr/src/app -it python_3.8 /bin/bash`
 1. `docker container exec -it python_3.8 bash`
 1. `python3 main.py`
