@@ -1,5 +1,7 @@
 from pprint import pprint
 import law_loader
+import MeCab
+import unidic
 
 # 使う予定の法令等
 # {
@@ -19,10 +21,14 @@ import law_loader
 # The Constitution of Japan
 loader = law_loader.LawLoader(category=2)
 row_numbers = loader.get_law_number('特許法')
-result = ''
+text = ''
 for row_number in row_numbers.values():
   raw = loader.get_raw(row_number)
   # pprint(raw, compact=False)
-  result += ' '.join(raw)
+  text += ' '.join(raw)
 
+print(text)
+
+tagger = MeCab.Tagger() 
+result = tagger.parse(text)
 print(result)
