@@ -11,7 +11,7 @@
 実行環境は、Dockerによりコンテナ化しています。
 
 以下の手順で、コンテナを起動してください。
-1. `docker image build -t python_3.8 .`
-1. `docker run --name python_3.8 -v ~/app/jpo/analyze-patent-law:/usr/app -it python_3.8 /bin/bash`
-1. `docker container exec -it python_3.8 bash`
+1. `docker image build -t python3 .`
+1. `docker run --name python_3.8 -v ~/app/jpo/analyze-patent-law:/usr/app -it python3 /bin/bash`
+1. `docker container exec -it python3 bash`
 1. `python3 main.py`
