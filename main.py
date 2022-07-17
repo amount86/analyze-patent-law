@@ -27,8 +27,11 @@ for row_number in row_numbers.values():
   # pprint(raw, compact=False)
   text += ' '.join(raw)
 
-print(text)
+# print(text)
 
-tagger = MeCab.Tagger() 
-result = tagger.parse(text)
-print(result)
+tagger = MeCab.Tagger()
+nouns = [line for line in tagger.parse(text).splitlines() if "名詞" in line.split()[-1]]
+# result = tagger.parse(text)
+# print(result)
+for str in nouns:
+  print(str.split())
